@@ -1,6 +1,6 @@
 mod utils;
 
-use wasm_bindgen::prelude::*;
+use wasm_bindgen::prelude::wasm_bindgen;
 
 // When the `wee_alloc` feature is enabled, use `wee_alloc` as the global
 // allocator.
@@ -8,12 +8,15 @@ use wasm_bindgen::prelude::*;
 #[global_allocator]
 static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
 
+// import JS function
 #[wasm_bindgen]
-extern {
+extern "C" {
     fn alert(s: &str);
 }
 
+// export greet function as JS function
 #[wasm_bindgen]
 pub fn greet() {
+    // use alert fn here
     alert("Hello, wasm-game-of-life!");
 }
