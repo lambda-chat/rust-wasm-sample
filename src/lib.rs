@@ -16,7 +16,7 @@ extern "C" {
 
 // export greet function as JS function
 #[wasm_bindgen]
-pub fn greet() {
+pub fn greet(name: &str) {
     // use alert fn here
-    alert("Hello, wasm-game-of-life!");
+    alert(&format!("Hello, {}!", name));
 }
